@@ -4,6 +4,7 @@
 
 ### 技术选型
 ----|----|----
+</br>
 Vue | 前端框架 | [https://vuejs.org/](https://vuejs.org/)</br>
 Vue-router | 路由框架 | [https://router.vuejs.org/](https://router.vuejs.org/)</br>
 Vuex | 全局状态管理框架 | [https://vuex.vuejs.org/](https://vuex.vuejs.org/)</br>
