@@ -38,7 +38,6 @@ src -- 源码目录
 - 在命令行中运行命令：npm install,下载相关依赖;
 - 在命令行中运行命令：npm run dev,运行项目;
 - 访问地址：[http://192.168.199.197:8080];
-- 具体部署过程请参考：[mall前端项目的安装与部署](http://www.macrozheng.com/#/deploy/mall_deploy_web)
 
 ## Build Setup
 

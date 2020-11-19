@@ -12,12 +12,15 @@ import '@/styles/default.css';
 import tool from '@/tools';
 import axios from '@/service';
 import api from '@/service/api';
+import cookies from "js-cookie";
 Vue.prototype.$tool = tool;
 Vue.prototype.$axios = axios;
 Vue.prototype.$api = api;
+Vue.prototype.$cookies=cookies;
 
 import App from './App';
 import router from './router';
+import store from './store'
 
 
 import '@/icons'; // icon
