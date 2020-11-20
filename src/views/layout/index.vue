@@ -1,5 +1,6 @@
 <template>
   <div class="app-wrapper">
+    {{userID}}
   </div>
 </template>
 
@@ -18,6 +19,7 @@
     beforeDestroy() {},
     destroyed() {},
     methods: {},
+    computed: {}
   };
 </script>
 
