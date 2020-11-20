@@ -1,6 +1,5 @@
 <template>
   <div class="app-wrapper">
-    {{userID}}
   </div>
 </template>
 
