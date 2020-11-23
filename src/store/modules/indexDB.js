@@ -1,4 +1,4 @@
-const user = {
+const indexDB = {
   namespaced: true,
   state: {},
   mutations: {
@@ -30,4 +30,4 @@ const user = {
     },
   }
 }
-export default user
+export default indexDB;

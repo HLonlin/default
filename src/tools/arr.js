@@ -43,7 +43,7 @@ const Arr = {
     }
     return arr.sort(compare(key));
   },
-  objMaxToMin: function(arr, key) {  //根据数组对象某属性大到小排序
+  objMaxToMin: function(arr, key) { //根据数组对象某属性大到小排序
     function compare(property) {
       return function(a, b) {
         var value1 = a[property];

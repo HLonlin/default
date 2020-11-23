@@ -10,13 +10,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import getters from './getters.js';
-import user from '@/store/modules/user.js';
+import indexDB from '@/store/modules/indexDB.js';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    user,
+    indexDB
   },
   mutations: {
     addState(state, item) { // 增加
