@@ -15,13 +15,16 @@
  * this.$indexDB.clearTable("indexDBname","tablename", (res) => {console.log(res);}); 清空库表，不是清库，是清表数据
  */
 "use strict"
+if (!window.localStorage.getItem('version')) {
+  window.localStorage.setItem('version', 1)
+}
 let indexDB = {
-  databaseName: '',
-  table: '',
-  init: (databaseName, table, callback) => {
+  init: (databaseName, table, flags, callback) => {
+    let flag = flags;
     let verIndex = window.localStorage.getItem('version')
     var request = window.indexedDB.open(databaseName, verIndex);
     request.onerror = () => {
+      console.log("%c打开数据库失败", "color:red");
       let errdata = {
         status: 'error',
         mes: '打开数据库失败！'
@@ -45,18 +48,18 @@ let indexDB = {
       callback(indexdb)
     };
     request.onupgradeneeded = (event) => {
+      console.log("%cOpening database for the first time or database version change", "color:green");
       indexdb = event.target.result;
       if (!indexdb.objectStoreNames.contains(table)) {
         if (flag) {
           indexdb.createObjectStore(table, {
-            keyPath: 'id',
-            autoIncrement: true
+            keyPath: 'id'
           });
         }
       }
     }
   },
-  insertData: (databaseName, table, key, data, callback) => { // 插入数据-增
+  insertData: (databaseName, table, key, data, callback) => {
     indexDB.init(databaseName, table, true, (db) => {
       try {
         var addData = [{
@@ -82,10 +85,10 @@ let indexDB = {
         }
         callback(errdata)
       }
-      db.close();
+      db.close()
     })
   },
-  selectData: (databaseName, table, key, callback) => { // 获取数据-查
+  selectData: (databaseName, table, key, callback) => {
     indexDB.init(databaseName, table, false, (db) => {
       if (db.isCreate == false) {
         let errdata = {
@@ -93,7 +96,7 @@ let indexDB = {
           mes: '获取数据失败！'
         }
         callback(errdata)
-        db.close();
+        db.close()
         return
       } else {
         var transaction = db.transaction(table, 'readwrite');
@@ -125,10 +128,10 @@ let indexDB = {
           callback(errdata)
         }
       }
-      db.close();
+      db.close()
     })
   },
-  deleteData: (databaseName, table, key, callback) => { // 删除数据-删
+  deleteData: (databaseName, table, key, callback) => {
     indexDB.init(databaseName, table, false, (db) => {
       if (db.isCreate == false) {
         let errdata = {
@@ -136,7 +139,7 @@ let indexDB = {
           mes: '删除数据失败！'
         }
         callback(errdata)
-        db.close();
+        db.close()
         return
       } else {
         var transaction = db.transaction(table, 'readwrite');
@@ -146,7 +149,7 @@ let indexDB = {
         let pro = new Promise((resolved) => {
           getresult.onsuccess = (e) => {
             resolved(e.target.result)
-            db.close();
+            db.close()
           }
         })
         pro.then(res => {
@@ -173,12 +176,12 @@ let indexDB = {
             }
             callback(errdata)
           }
-          db.close();
+          db.close()
         })
       }
     })
   },
-  changeData: (databaseName, table, key, data, callback) => { // 修改数据-改
+  changeData: (databaseName, table, key, data, callback) => {
     indexDB.init(databaseName, table, true, (db) => {
       try {
         var addData = {
@@ -202,10 +205,10 @@ let indexDB = {
         }
         callback(errdata)
       }
-      db.close();
+      db.close()
     })
   },
-  clearTable: (databaseName, table, callback) => { // 清空数据表
+  clearTable: (databaseName, table, callback) => {
     indexDB.init(databaseName, table, true, (db) => {
       var transaction = db.transaction(table, 'readwrite');
       var store = transaction.objectStore(table);
@@ -224,10 +227,29 @@ let indexDB = {
         }
         callback(successmsg)
       }
-      db.close();
     })
   },
-  indexDB: () => {}
+  delteTable: (databaseName, table, callback) => {
+    indexDB.init(databaseName, table, true, (db) => {
+      var transaction = db.transaction(table, 'readwrite');
+      var store = transaction.objectStore(table);
+      var result = store.delete(1);
+      result.onsuccess = () => {
+        let successmsg = {
+          status: "success",
+          msg: "数据表" + table + "删除成功！",
+        }
+        callback(successmsg)
+      }
+      result.onerror = () => {
+        let successmsg = {
+          status: "success",
+          msg: "数据表" + table + "删除失败！",
+        }
+        callback(successmsg)
+      }
+    })
+  },
 }
 
 export default indexDB;
