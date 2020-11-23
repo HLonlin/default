@@ -33,5 +33,25 @@ const Arr = {
     });
     return arr;
   },
+  objMinToMax: function(arr, key) { // 根据数组对象某属性小到大排序
+    function compare(property) {
+      return function(a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+        return value1 - value2;
+      }
+    }
+    return arr.sort(compare(key));
+  },
+  objMaxToMin: function(arr, key) {  //根据数组对象某属性大到小排序
+    function compare(property) {
+      return function(a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+        return value2 - value1;
+      }
+    }
+    return arr.sort(compare(key));
+  }
 }
 export default Arr;
