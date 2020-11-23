@@ -55,8 +55,4 @@ npm run build
 npm run build --report
 ```
 
-<<<<<<< HEAD
-有关工作原理的详细说明，请查看[docs for vue-loader](https://cn.vuejs.org/v2/guide/).
-=======
-For a detailed explanation on how things work, check out the [guide](https://cn.vuejs.org/v2/guide/) and [docs for vue-loader](https://cn.vuejs.org/v2/guide/).
->>>>>>> d44bf5c8241e918b1d17cb86344cf2761cb892ce
+有关工作原理的详细说明，请查看[docs for vue.js](https://cn.vuejs.org/v2/guide/).
