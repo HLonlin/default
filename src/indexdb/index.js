@@ -229,27 +229,6 @@ let indexDB = {
       }
     })
   },
-  delteTable: (databaseName, table, callback) => {
-    indexDB.init(databaseName, table, true, (db) => {
-      var transaction = db.transaction(table, 'readwrite');
-      var store = transaction.objectStore(table);
-      var result = store.delete(1);
-      result.onsuccess = () => {
-        let successmsg = {
-          status: "success",
-          msg: "数据表" + table + "删除成功！",
-        }
-        callback(successmsg)
-      }
-      result.onerror = () => {
-        let successmsg = {
-          status: "success",
-          msg: "数据表" + table + "删除失败！",
-        }
-        callback(successmsg)
-      }
-    })
-  },
 }
 
 export default indexDB;
