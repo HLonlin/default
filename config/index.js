@@ -17,7 +17,7 @@ module.exports = {
       }
     },
     host: '192.168.199.197',                        // 运行测试页面的域名ip
-    port: 8080,                               // 运行测试页面的端口
+    port: 8888,                               // 运行测试页面的端口
     autoOpenBrowser: true,                    // 项目运行时是否自动打开浏览器
     errorOverlay: true,                       // 浏览器错误提示
     notifyOnErrors: true,                     // 跨平台错误提示
