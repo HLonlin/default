@@ -23,13 +23,11 @@ src -- 源码目录
 ├── assets -- 资源文件
     ├── images -- 图片资源
     ├── styles -- 样式资源
-    ├── components -- 常用函数
+    ├── tools -- 常用函数
 ├── indexdb -- 前端数据库indexDB
 ├── router -- vue-router路由配置
 ├── service -- axios网络请求定义
 ├── store -- vuex的状态管理
-├── styles -- css样式
-├── tools -- 工具类
 └── views -- 前端页面
     ├── home -- 首页
     ├── pages -- 子页面
